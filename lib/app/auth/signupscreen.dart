@@ -17,13 +17,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   var passwordController = TextEditingController();
 
   signUp() async {
-    // await DioHelper.postData(url: linkSignUp, data: {
-    //   'username': usernameController.text,
-    //   'email': emailController.text,
-    //   'password': passwordController.text,
-    // }).then((value) {
-    //   print(value.data);
-    // });
     try {
       var response = await crud.postRequest(linkSignUp, {
         'username': usernameController.text,
@@ -65,12 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   TextFormField(
                     controller: usernameController,
                     keyboardType: TextInputType.text,
-                    // onFieldSubmitted: (String value) {
-                    //   print(value);
-                    // },
-                    // onChanged: (String value) {
-                    //   print(value);
-                    // },
+                   
                     decoration: const InputDecoration(
                       labelText: 'Username',
                       prefixIcon: Icon(
@@ -90,12 +78,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   TextFormField(
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
-                    // onFieldSubmitted: (String value) {
-                    //   print(value);
-                    // },
-                    // onChanged: (String value) {
-                    //   print(value);
-                    // },
+                   
                     decoration: const InputDecoration(
                       labelText: 'Email Address',
                       prefixIcon: Icon(
@@ -116,12 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     controller: passwordController,
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: true,
-                    // onFieldSubmitted: (String value) {
-                    //   print(value);
-                    // },
-                    // onChanged: (String value) {
-                    //   print(value);
-                    // },
+                   
                     decoration: const InputDecoration(
                       labelText: 'Password',
                       prefixIcon: Icon(
