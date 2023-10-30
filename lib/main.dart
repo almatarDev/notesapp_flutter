@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Notes App',
-      initialRoute: "login",
+      initialRoute: sharedPref.getString("id") == null ? "login" : "home",
       routes: {
         "login": (context) => const LoginScreen(),
         "signup": (context) => const SignUpScreen(),

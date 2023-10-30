@@ -13,8 +13,8 @@ class EditNote extends StatefulWidget {
 }
 
 class _EditNoteState extends State<EditNote> with Curd {
-  var titleController = TextEditingController();
-  var contentController = TextEditingController();
+  TextEditingController titleController = TextEditingController();
+  TextEditingController contentController = TextEditingController();
   var formKey = GlobalKey<FormState>();
   bool isloading = false;
 

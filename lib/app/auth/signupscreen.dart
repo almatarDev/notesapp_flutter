@@ -19,9 +19,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   signUp() async {
     try {
       var response = await crud.postRequest(linkSignUp, {
-        'username': usernameController.text,
-        'email': emailController.text,
-        'password': passwordController.text,
+        "username": usernameController.text,
+        "email": emailController.text,
+        "password": passwordController.text,
       });
       if (response['status'] == "success") {
         Navigator.of(context).pushNamedAndRemoveUntil("home", (route) => false);
@@ -58,7 +58,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   TextFormField(
                     controller: usernameController,
                     keyboardType: TextInputType.text,
-                   
                     decoration: const InputDecoration(
                       labelText: 'Username',
                       prefixIcon: Icon(
@@ -78,7 +77,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   TextFormField(
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
-                   
                     decoration: const InputDecoration(
                       labelText: 'Email Address',
                       prefixIcon: Icon(
@@ -99,7 +97,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     controller: passwordController,
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: true,
-                   
                     decoration: const InputDecoration(
                       labelText: 'Password',
                       prefixIcon: Icon(

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'models/notemodel.dart';
+
 class CardNote extends StatelessWidget {
   final void Function() onTap;
-  final String title;
-  final String content;
+  final NoteModel noteModel;
   final void Function() onDelete;
   const CardNote({
     Key? key,
+    required this.noteModel,
     required this.onTap,
-    required this.title,
-    required this.content,
     required this.onDelete,
   }) : super(key: key);
 
@@ -24,7 +24,7 @@ class CardNote extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Image.network(
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQto4lYhKepe6-QDJGmiBrOxx8YYki9zDn9z_cjaEuIQ-Bsv2mISDh9ArX8HZ6xVFX7Ilg&usqp=CAU',
+                noteModel.noteImage,
                 width: 100,
                 height: 100,
               ),
@@ -33,11 +33,11 @@ class CardNote extends StatelessWidget {
               flex: 2,
               child: ListTile(
                 title: Text(
-                  title,
+                  noteModel.noteTitle,
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 subtitle: Text(
-                  content,
+                  noteModel.noteContent,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),

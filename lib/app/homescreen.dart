@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testing/component/cardnote.dart';
+import 'package:testing/component/models/notemodel.dart';
 import 'package:testing/constants/linkesapi.dart';
 import 'package:testing/main.dart';
 import 'package:testing/notes/editnote.dart';
@@ -72,29 +73,31 @@ class _HomeScreenState extends State<HomeScreen> with Curd {
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
                       return CardNote(
-                          onDelete: () async {
-                            var response = await postRequest(linkDeleteNotes, {
-                              'id': snapshot.data!['data'][index]['note_id']
-                                  .toString(),
-                            });
-                            if (response['status'] == ['success']) {
-                              Navigator.of(context)
-                                  .pushReplacementNamed("home");
-                            }
-                          },
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => EditNote(
-                                    note: snapshot.data!['data'][index],
-                                  ),
-                                ));
-                          },
-                          title:
-                              '${snapshot.data!['data'][index]['note_title']}',
-                          content:
-                              '${snapshot.data!['data'][index]['note_content']}');
+                        onDelete: () async {
+                          var response = await postRequest(linkDeleteNotes, {
+                            'id': snapshot.data!['data'][index]['note_id']
+                                .toString(),
+                          });
+                          if (response['status'] == ['success']) {
+                            Navigator.of(context).pushReplacementNamed("home");
+                          }
+                        },
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => EditNote(
+                                  note: snapshot.data!['data'][index],
+                                ),
+                              ));
+                        },
+                        noteModel:
+                            NoteModel.fromJson(snapshot.data['data'][index]),
+                        // title: '${snapshot.data!['data'][index]['note_title']}',
+                        // content:
+                        //     '${snapshot.data!['data'][index]['note_content']}',
+                        // image: '${snapshot.data!['data'][index]['note_image']}',
+                      );
                     },
                   );
                 }

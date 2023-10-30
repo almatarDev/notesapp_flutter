@@ -11,7 +11,7 @@ class Curd {
         var responsebody = jsonDecode(response.body);
         return responsebody;
       } else {
-        print('Error ${response.statusCode}');
+        print('000000000Error ${response.statusCode}');
       }
     } catch (e) {
       print('Error cache $e');
@@ -21,7 +21,7 @@ class Curd {
 //**********************
   postRequest(String url, Map data) async {
     var response = await http.post(Uri.parse(url), body: data);
-    print(response.statusCode);
+    print('${response.statusCode}');
     Map responsebody = jsonDecode(response.body);
     print(responsebody.values);
     return responsebody;
@@ -33,8 +33,14 @@ class Curd {
     var request = http.MultipartRequest("POST", Uri.parse(url));
     var length = await file.length();
     var stream = http.ByteStream(file.openRead());
-    var multipartfile = http.MultipartFile('file', stream, length,
-        filename: basename(file.path));
+    var multipartfile = http.MultipartFile(
+      'file',
+      stream,
+      length,
+      filename: basename(
+        file.path,
+      ),
+    );
     request.files.add(multipartfile);
     data.forEach((key, value) {
       request.fields[key] = value;

@@ -1,4 +1,5 @@
-const String linkServerName = "http://192.168.43.29/coursephp";
+const String linkServerName = "https://noteapp1.000webhostapp.com/coursephp";
+const String linkImageRoot = "https://noteapp1.000webhostapp.com/upload";
 
 //Auth
 
